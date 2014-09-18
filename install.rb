@@ -42,9 +42,9 @@ files.each {|f|
 }
 
 begin
-  require 'stemmer'
+  require 'ruby-stemmer'
 rescue LoadError
   puts
-  puts "Please install Stemmer from http://rubyforge.org/projects/stemmer or via 'gem install stemmer'"
+  puts "Please install ruby-stemmer"
   puts
 end

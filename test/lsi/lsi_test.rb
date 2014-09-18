@@ -99,7 +99,7 @@ class LSITest < Test::Unit::TestCase
   
   def test_remove_item
     lsi = Classifier::LSI.new
-    lsi.add_item @str1, :categories => "Dog", key: 5
+    lsi.add_item @str1, :categories => "Dog", :key => 5
     lsi.add_item @str2, :categories => "Dog"
     lsi.add_item @str3, :categories => "Cat"
     lsi.add_item @str4, :categories => "Cat"
@@ -149,7 +149,7 @@ class LSITest < Test::Unit::TestCase
 =end
 
   def test_database_file
-    lsi = Classifier::LSI.new db: "test/testdb.sqlite"
+    lsi = Classifier::LSI.new :db => "test/testdb.sqlite"
     [@str1, @str2, @str3, @str4, @str5].each { |x| lsi << x }
     
     assert_equal lsi.items( @str1 ).content, @str1
@@ -158,14 +158,14 @@ class LSITest < Test::Unit::TestCase
   end
   
   def test_reload_from_database_file
-    lsi = Classifier::LSI.new db: "test/testdb.sqlite"
+    lsi = Classifier::LSI.new :db => "test/testdb.sqlite"
     [@str1, @str2, @str3, @str4, @str5].each { |x| lsi << x }
     
     assert_equal lsi.items( @str1 ).content, @str1
     
     lsi = nil
-    
-    lsi = Classifier::LSI.new db: "test/testdb.sqlite"
+
+    lsi = Classifier::LSI.new :db => "test/testdb.sqlite"
     assert_equal 5, lsi.items.size
     assert_equal lsi.items( @str1 ).content, @str1
     assert ! lsi.needs_rebuild?

@@ -13,8 +13,8 @@ class WordHashTest < Test::Unit::TestCase
       "them" => 1,
       "test" => 1
     }
-    
-    assert_equal hash, Classifier::WordHash.new("here are some good words of test's. I hope you love them!", false)
+
+    assert_equal hash, Classifier::WordHash.new("here are some good words of test's. I hope you love them!", :clean_source => false)
   end
 
 

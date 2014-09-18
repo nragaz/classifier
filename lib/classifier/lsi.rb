@@ -355,8 +355,8 @@ module Classifier
       if ContentNode.find_by_content(db, content).count > 0
         return items( ContentNode.find_key_by_content(db, content) )
       end
-      
-      cn = ContentNode.new(self, content, persist: false)
+
+      cn = ContentNode.new(self, content, :persist => false)
       cn.generate_raw_vector unless needs_rebuild?
       cn
     end
